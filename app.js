@@ -237,8 +237,10 @@ app.get('/upsertDB',
   async (req,res,next) => {
     //await Course.deleteMany({})
     for (course of courses){
-      const {subject,coursenum,section,term}=course;
+      const {subject,coursenum,section,term,times}=course;
       const num = getNum(coursenum);
+      const strTimes = times2str(times);
+      course.strTimes = strTimes;
       course.num=num
       course.suffix = coursenum.slice(num.length)
       await Course.findOneAndUpdate({subject,coursenum,section,term},course,{upsert:true})
