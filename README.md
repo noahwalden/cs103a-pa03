@@ -1,26 +1,20 @@
-# CS103a Express App Demo
+# Course Search App
 
-This is a starter project which has a simple authentication module 
-and provides access to a mongoose database in the cloud.
+This is a web application written in Express that allows you to search a
+MongoDB database for courses that you might want to take.
 
-## Installation
-Download the project from github and download nodejs and npm from https://nodejs.org
-and cd into the folder
+## To install and run
 
-Install the packages with
+Ensure that you have MongoDB, node, and npm installed locally.
+
+Clone the repository
 ``` bash
-npm install
+git clone https://github.com/noahwalden/cs103a-pa03.git
 ```
-Start the project with
-``` bash
+
+`cd` into the repository and run
+
+```bash
+npm install
 node app.js
 ```
-or install nodemon (the node monitoring app) with
-``` bash
-npm install -g nodemon
-```
-and start the project with
-``` bash
-nodemon
-```
-
