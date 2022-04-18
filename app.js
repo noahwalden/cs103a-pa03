@@ -262,6 +262,24 @@ app.post('/courses/bySubject',
   }
 )
 
+app.post('/courses/byKeyword',
+  // show list of courses in a given subject
+  async (req,res,next) => {
+    const {keyword} = req.body;
+    const coursesToSort = await Course.find({independent_study:false}).sort({term:1,num:1,section:1})
+    let courses = []
+    for (course of coursesToSort) {
+      if ((String(course.name)).includes(keyword)) {
+        courses.push(course);
+      }
+    }
+    res.locals.courses = courses
+    res.locals.times2str = times2str
+    //res.json(courses)
+    res.render('courselist')
+  }
+)
+
 app.get('/courses/show/:courseId',
   // show all info about a course given its courseid
   async (req,res,next) => {
