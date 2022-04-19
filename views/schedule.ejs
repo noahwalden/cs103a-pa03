@@ -1,4 +1,4 @@
-<ul>
+<!-- <div class = ''>
     <% for (course of courses){%>
         <li> 
             <a href="/schedule/remove/<%= course._id %>">X</a>
@@ -9,7 +9,34 @@
             
         </li>
     <% } %>
-</ul>
+</div> -->
+<!-- subject, num, name, term, course title times, inst -->
+<div class="d-flex flex-wrap text-center overflow-scroll">
+    <% for (course of courses) {%>
+        <div class="p-3 m-3 border border-primary bg-light">    
+            <br>
+            <a href="/schedule/remove/<%= course._id %>">Remove</a> <br>
+            <span>
+            <%= course['subject'] %> <%= course.coursenum %> <%= course.name %><br>
+            <Strong>Term: </Strong><%= course.term %><br>
+
+            <% for (t of times2str(course.times)){%> 
+                <%= t %> <br> 
+            <%} %>
+            
+            </span>
+            <hr>
+            <div>
+                <Strong>Instructor: </Strong><%= course.instructor%>
+            </div>
+            
+            <div>
+                <Strong>Description: </Strong>  <%=course.description%>
+            </div>
+
+        </div>
+    <% }%>
+    </div>
 
 <!--
     <pre>
