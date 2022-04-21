@@ -302,6 +302,22 @@ app.post('/courses/byKeyword',
   }
 )
 
+
+app.post('/courses/byDescriptor',
+  // show list of courses with a given specific Descriptor, a word which is said in the description
+  async (req,res,next) => {
+    const descriptor = req.body.descriptor;
+    const courses = 
+        await Course
+                .find({description:{$regex: descriptor},independent_study:false})
+                .sort({term:1,num:1,section:1})
+    //res.json(courses)
+    res.locals.courses = courses
+    res.render('courselist')
+  }
+)
+
+
 app.post('/courses/byInst',
   // show courses taught by a faculty send from a form
   async (req,res,next) => {
